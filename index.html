@@ -10,12 +10,15 @@
 </head>
 
 <body>
-  <div class="container">
+  <div class="grid-container">
     <div class="header">
       <p>GAME OF THE DAY</p>
     </div>
     <div class="rule">
-      <p>Game rules:......</p>
+      <div id="show-rule">rules about the Game</div>
+      <br>
+      <br>
+      <div id='display'>YOu gained points</div>
     </div>
     <div class="player1">
       <div class="points">POINTS</div>
@@ -23,20 +26,37 @@
       <p>Computer Card</p>
     </div>
     <div class="bet">
-      <p>BET</p>
-      <button id="large">Large</button>
-      <br>
-      <button id="small">small</button>
-      <br>
-      <button id="odd">odd</button>
-      <br>
-      <button id="even">even</button>
+      <div>
+        <button id='bet-button'>BET</button>
+      </div>
+      <div>
+        <label class="container">Large
+          <input type="checkbox" checked="checked">
+          <span class="checkmark"></span>
+        </label>
+        
+        <label class="container">Small
+          <input type="checkbox">
+          <span class="checkmark"></span>
+        </label>
+        
+        <label class="container">Odd
+          <input type="checkbox">
+          <span class="checkmark"></span>
+        </label>
+        
+        <label class="container">Even
+          <input type="checkbox">
+          <span class="checkmark"></span>
+        </label>
+      </div>
     </div>
 
     <div class="player2">
       <div class="points">POINTS</div>
       <div class="card dA"></div>
       <p>Player Card</p>
+
     </div>
   </div>
 </body>

@@ -21,7 +21,7 @@ playerPoint = 0;
 /*----- functions -----*/
 initialize();
 
-function createCard()
+function createCard();
 
 
 /*click list of bet button */
