@@ -1,0 +1,47 @@
+body {
+    background-color: antiquewhite;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 0.5fr 1fr 1fr;
+    gap: 1px 1px;
+    grid-template-areas:
+        'header header header header header'
+        'rule rule rule rule rule'
+        'player1 player1 bet player2 player2';
+}
+
+.header {
+    grid-area: header;
+    display: flex;
+    justify-content: center;
+}
+
+.header p {
+    font-size: 3vw;
+}
+
+.rule {
+    grid-area: rule;
+    display: flex;
+    justify-content: center;
+}
+
+.player1 {
+    margin: auto;
+    grid-area: player1;
+}
+
+.bet {
+    grid-area: bet;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.player2 {
+    margin: auto;
+    grid-area: player2;
+}
