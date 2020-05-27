@@ -90,7 +90,7 @@ body {
   
   /* When the radio button is checked, add a blue background */
   .container input:checked ~ .checkmark {
-    background-color: #2196F3;
+    background-color: rgb(205, 243, 33);
   }
   
   /* Create the indicator (the dot/circle - hidden when not checked) */
@@ -119,9 +119,24 @@ body {
       font-size: 3vw;
       margin: 0px 20px 20px 0px;
   }
+  #bet-button:hover {
+    cursor: pointer;
+    background-color: honeydew;
+}
 
   #show-rule {
     margin-top: 0;
     font-size: 2vw;
     border:1px solid grey;
+  }
+
+  #reset {
+    border-radius: 12px;
+    background-color: white;
+    transition-duration: 0.4s;
+  }
+
+  #reset:hover {
+    cursor: pointer;
+    background-color:honeydew;
   }

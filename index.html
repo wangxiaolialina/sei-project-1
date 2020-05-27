@@ -22,40 +22,47 @@
     </div>
     <div class="player1">
       <div class="points">POINTS</div>
-      <div class="card back-red"></div>
-      <p>Computer Card</p>
+      <div id="playerCard"></div>
+      <p>Player Card</p>
     </div>
     <div class="bet">
       <div>
         <button id='bet-button'>BET</button>
       </div>
       <div>
-        <label class="container">Large
-          <input type="checkbox" checked="checked">
-          <span class="checkmark"></span>
-        </label>
-        
-        <label class="container">Small
-          <input type="checkbox">
-          <span class="checkmark"></span>
-        </label>
-        
-        <label class="container">Odd
-          <input type="checkbox">
-          <span class="checkmark"></span>
-        </label>
-        
-        <label class="container">Even
-          <input type="checkbox">
-          <span class="checkmark"></span>
-        </label>
+        <form>
+          <label class="container">
+            Large
+            <input type="radio" name='opt1' value="large">
+            <span class="checkmark"></span>
+          </label>
+          
+          <label class="container">
+            Small
+            <input type="radio" name='opt1' value="small">
+            <span class="checkmark"></span>
+          </label>
+          
+          <label class="container">
+            Odd
+            <input type="radio" name='opt2' id='odd'>
+            <span class="checkmark"></span>
+          </label>
+          
+          <label class="container">
+            Even
+            <input type="radio" name='opt2' id='even'>
+            <span class="checkmark"></span>
+          </label>
+        </form>
       </div>
+      <button id='reset'>Replay</button>
     </div>
 
     <div class="player2">
       <div class="points">POINTS</div>
-      <div class="card dA"></div>
-      <p>Player Card</p>
+      <div id='computerCard'></div>
+      <p>Computer Card</p>
 
     </div>
   </div>
