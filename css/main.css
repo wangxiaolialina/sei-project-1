@@ -31,8 +31,8 @@ body {
     grid-area: rule;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center;
+    align-items: center; */
 }
 
 .player1 {
@@ -119,7 +119,7 @@ body {
   }
 
   #bet-button {
-      font-size: 3vw;
+      font-size: 2vw;
       margin: 0px 20px 20px 0px;
   }
   #bet-button:hover {
@@ -127,11 +127,16 @@ body {
     background-color: honeydew;
 }
 
-  #show-rule {
+  #show-rule{
     margin-top: 0;
-    font-size: 2vw;
+    font-size: 1vw;
     border:1px solid grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
+
 
   #reset {
     border-radius: 12px;
@@ -142,4 +147,10 @@ body {
   #reset:hover {
     cursor: pointer;
     background-color:honeydew;
+  }
+
+  #display {
+      font-size: 2vw;
+      display: flex;
+      justify-content: center;
   }
