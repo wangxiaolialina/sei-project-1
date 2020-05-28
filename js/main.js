@@ -32,6 +32,7 @@ playerChoice = null;
 /*----- cached element references -----*/
 let playerCard = document.querySelector('#player-card');
 let computerCard = document.querySelector('#computer-card');
+let nextRoundButton=document.createElement('button');
 
 
 
@@ -45,6 +46,14 @@ playerCard.addEventListener('click', function () {
 
 let betButton = document.querySelector('#bet-button')
 betButton.addEventListener('click',bet);
+
+
+nextRoundButton.addEventListener('click',function(){
+    document.querySelector('input[name="opt"]:checked').checked = false;
+    playerCard.classList.remove(playerCard.classList[1]);
+    computerCard.classList.remove(computerCard.classList[1]);
+    initialize();
+})
 
 //click on bet button
 // if (large or small && odd or even not clicked){
@@ -73,6 +82,8 @@ function initialize() {
     //      player point = 5;
     displayPlayerPoint = document.querySelector('#player-point');
     displayPlayerPoint.innerText = 'Player points: ' + playerPoint;
+    //remove classList
+
 }
 
 initialize()
@@ -80,12 +91,12 @@ initialize()
 //Create Card for computer and player
 getSuit = function () {
     i = Math.floor(Math.random() * SUIT.length)
-    return SUIT[i]
+    return SUIT[i];
 }
 
 getNum = function () {
     i = Math.floor(Math.random() * NUM.length)
-    return NUM[i]
+    return NUM[i];
 }
 
 function createCard(id) {
@@ -142,16 +153,14 @@ function compareCard(){
             playerGain(-1)
         }
 
-    }
-    if (playerChoice == 'small') {
+    } else if (playerChoice == 'small') {
         if (playerCardNum < computerCardNum) {
            playerGain(1)
         } else {
-            playerGain(1)
+            playerGain(-1)
         }
-    }
-    if (playerChoice == 'equal') {
-        if (playerCardNum = computerCardNum) {
+    } else if (playerChoice == 'equal') {
+        if (playerCardNum == computerCardNum) {
             playerGain(2)
         } else {
             playerGain(-2)
@@ -161,6 +170,11 @@ function compareCard(){
     displayComPoint.innerText = 'Computer points: ' + computerPoint;
 }
 
+//show Next round button
+function nextRound (){
+    nextRoundButton.innerText='Next Round';
+    document.getElementById("display").appendChild(nextRoundButton);
+}
 //after click bet 
 function bet() {
     findPlayerChoice();
@@ -170,18 +184,21 @@ function bet() {
     }
     else {createCard(COMPUTER);
         compareCard();
+        nextRound();
     }
 }
 
 
 //check win
 // checkWin(){
-//     if (player points=10){
-//     displayResult =  "you are the Winner"
+//     if (playerPoints=10) {
+//         display.innerText  =  "You are the Winner!"
+//         // display.style.'font-size' = 2vw;
 //     reset()
 //     }
-//     if (computer points = 10) {
-//         displayResult = "Sorry, try again"
+//     if (computerPoints = 10) {
+//         display.innerText = "Sorry, try again"
+//         // display.style.'font-size' = 2vw;
 //         reset()
 //     }
 // }
