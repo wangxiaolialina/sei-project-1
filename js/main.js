@@ -52,21 +52,14 @@ betButton.addEventListener('click', bet)
 
 nextRoundButton.addEventListener('click', function () {
   document.querySelector('input[name="opt"]:checked').checked = false;
-  playerCard.classList.remove(playerCard.classList[1]);
-  computerCard.classList.remove(computerCard.classList[1]);
+  playerCard.classList.remove(playerCard.classList[2]);
+  computerCard.classList.remove(computerCard.classList[2]);
+  
   initialize()
 })
 
 replayButton.addEventListener('click', reset);
 
-//click on bet button
-// if (large or small && odd or even not clicked){
-// return}
-// else {checkLargeSmall () && checkEvenOdd}
-// display { 'you gain ${}'
-// }
-
-// betSelect.addEventListener('click', compare)
 
 /*----- functions -----*/
 
@@ -126,9 +119,9 @@ function findPlayerChoice() {
 //compare card between player and computer
 
 function compareCard() {
-  numOfPlayerCard = playerCard.classList[1].substring(1)
+  numOfPlayerCard = playerCard.classList[2].substring(1)
   playerCardNum = NUM.indexOf(numOfPlayerCard)
-  numOfComputerCard = computerCard.classList[1].substring(1)
+  numOfComputerCard = computerCard.classList[2].substring(1)
   computerCardNum = NUM.indexOf(numOfComputerCard)
 
   if (playerChoice == 'large') {
@@ -203,11 +196,11 @@ function bet() {
 function reset (){
   //      COMPUTER = classlist back-red;
   computerCard.removeAttribute('class');
-  computerCard.setAttribute('class','card back-red');
+  computerCard.setAttribute('class', 'card xlarge back-red');
 
   //      PLAYER = classlist back-blue;
   playerCard.removeAttribute('class');
-  playerCard.setAttribute('class','card back-blue');
+  playerCard.setAttribute('class','card xlarge back-blue');
   //      id display = "Choose your bet and click on your bet"
   display.innerText = 'Check your card first and then choose bet'
 //clear radio choice
