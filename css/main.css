@@ -1,5 +1,8 @@
 body {
-    background-color: antiquewhite;
+    background-image: url(/card-deck-css/images/poker-table.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: whitesmoke;
 }
 
 .grid-container {
