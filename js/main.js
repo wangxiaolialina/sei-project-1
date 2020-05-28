@@ -122,8 +122,9 @@ function playerGain(point){
         display.innerText = 'You gain:' + point + ' point(s)';
     }
     if (point<0){
-        display.innerText = 'You lose:' + point*('-1') + ' point(s)'
+        display.innerText = 'You lose:' + point*(-1) + ' point(s)'
     }
+    
 }
 
 
@@ -138,7 +139,7 @@ function compareCard(){
             playerGain(1)
             
         } else {
-            playerGain('-1')
+            playerGain(-1)
         }
 
     }
@@ -153,10 +154,11 @@ function compareCard(){
         if (playerCardNum = computerCardNum) {
             playerGain(2)
         } else {
-            playerGain('-2')
+            playerGain(-2)
         }
     }
-    
+    displayPlayerPoint.innerText = 'Player points: ' + playerPoint;
+    displayComPoint.innerText = 'Computer points: ' + computerPoint;
 }
 
 //after click bet 
