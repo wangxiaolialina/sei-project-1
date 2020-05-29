@@ -28,7 +28,7 @@ let computerPoint = INITIALPOINT
 let playerPoint = INITIALPOINT
 
 //playerchoice large/small and even/odd
-playerChoice = null
+let playerChoice = null
 
 /*----- cached element references -----*/
 let playerCard = document.querySelector('#player-card')
@@ -39,6 +39,7 @@ let displayComPoint = document.querySelector('#computer-point')
 let displayPlayerPoint = document.querySelector('#player-point')
 let display = document.querySelector('#display')
 let replayButton = document.querySelector('#reset')
+let betButton = document.querySelector('#bet-button')
 
 /*----- event listeners -----*/
 
@@ -47,8 +48,8 @@ playerCard.addEventListener('click', function () {
   createCard(PLAYER)
 })
 
-let betButton = document.querySelector('#bet-button')
-betButton.addEventListener('click', bet)
+
+betButton.addEventListener('click', bet);
 
 nextRoundButton.addEventListener('click', function () {
   document.querySelector('input[name="opt"]:checked').checked = false
@@ -76,6 +77,8 @@ function initialize() {
   displayComPoint.innerText = 'Computer points: ' + computerPoint
   //      player point = 5;
   displayPlayerPoint.innerText = 'Player points: ' + playerPoint
+
+  playerChoice = null;
 }
 
 initialize()
@@ -163,25 +166,18 @@ function displayMessage(point) {
       display.innerText = 'You lose:' + point * -1 + ' point(s)'
     }
     nextRound()
-  } else if (playerPoint == WINPOINT) {
+  } else if (playerPoint >= WINPOINT) {
     display.innerText = display.innerText = 'You are the Winner!'
-  } else if (computerPoint == WINPOINT) {
+  } else if (computerPoint >= WINPOINT) {
     display.innerText = display.innerText = 'Sorry, try again'
   }
   displayPlayerPoint.innerText = 'Player points: ' + playerPoint
   displayComPoint.innerText = 'Computer points: ' + computerPoint
 }
 
-//reset()
-// COMPUTER = classlist back-red;
-//      PLAYER = classlist back-blue;
-//      id display = "Choose your bet and click on your bet"
-//      computer point = 5;
-//      player point = 5;
-
 //after click bet
 function bet() {
-  findPlayerChoice()
+  findPlayerChoice();
   if (playerCard.classList.contains('back-blue') || playerChoice == null) {
     return
   } else {
@@ -206,8 +202,10 @@ function reset() {
   document.querySelectorAll("input[name='opt']").forEach(input => {input.checked=false})
   //      computer point = 5;
   displayComPoint.innerText = 'Computer points: ' + INITIALPOINT
+  computerPoint = INITIALPOINT;
   //      player point = 5;
-  displayPlayerPoint.innerText = 'Player points: ' + INITIALPOINT
-
+  displayPlayerPoint.innerText = 'Player points: ' + INITIALPOINT;
+  playerPoint = INITIALPOINT;
   betButton.removeAttribute("disabled");
+  playerChoice = null;
 }
