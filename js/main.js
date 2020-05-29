@@ -20,7 +20,7 @@ const NUM = [
 const PLAYER = '#player-card'
 const COMPUTER = '#computer-card'
 const INITIALPOINT = 5
-const WINPOINT = 8
+const WINPOINT = 10
 
 /*----- app's state (variables) -----*/
 
