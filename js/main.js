@@ -19,47 +19,46 @@ const NUM = [
 ]
 const PLAYER = '#player-card'
 const COMPUTER = '#computer-card'
-const INITIALPOINT = 5;
-const WINPOINT = 8;
+const INITIALPOINT = 5
+const WINPOINT = 10
 
 /*----- app's state (variables) -----*/
 
-
-let computerPoint = INITIALPOINT;
-let playerPoint = INITIALPOINT;
+let computerPoint = INITIALPOINT
+let playerPoint = INITIALPOINT
 
 //playerchoice large/small and even/odd
 playerChoice = null
 
 /*----- cached element references -----*/
-let playerCard = document.querySelector('#player-card');
-let computerCard = document.querySelector('#computer-card');
-let nextRoundButton = document.createElement('button');
-let displayComPoint = document.querySelector('#computer-point');
-let displayPlayerPoint = document.querySelector('#player-point');
-let display = document.querySelector('#display');
-let replayButton = document.querySelector('#reset');
+let playerCard = document.querySelector('#player-card')
+let computerCard = document.querySelector('#computer-card')
+let nextRoundButton = document.createElement('button')
+nextRoundButton.setAttribute('class', 'next-button')
+let displayComPoint = document.querySelector('#computer-point')
+let displayPlayerPoint = document.querySelector('#player-point')
+let display = document.querySelector('#display')
+let replayButton = document.querySelector('#reset')
 
 /*----- event listeners -----*/
 
 //click playercard and create a card
 playerCard.addEventListener('click', function () {
-  createCard(PLAYER);
+  createCard(PLAYER)
 })
 
 let betButton = document.querySelector('#bet-button')
 betButton.addEventListener('click', bet)
 
 nextRoundButton.addEventListener('click', function () {
-  document.querySelector('input[name="opt"]:checked').checked = false;
-  playerCard.classList.remove(playerCard.classList[2]);
-  computerCard.classList.remove(computerCard.classList[2]);
-  
+  document.querySelector('input[name="opt"]:checked').checked = false
+  playerCard.classList.remove(playerCard.classList[2])
+  computerCard.classList.remove(computerCard.classList[2])
+  betButton.removeAttribute("disabled");
   initialize()
 })
 
-replayButton.addEventListener('click', reset);
-
+replayButton.addEventListener('click', reset)
 
 /*----- functions -----*/
 
@@ -154,25 +153,24 @@ function nextRound() {
 //check win
 
 function displayMessage(point) {
-  playerPoint = playerPoint + point;
-  computerPoint = computerPoint - point;
+  playerPoint = playerPoint + point
+  computerPoint = computerPoint - point
   if (playerPoint < WINPOINT && computerPoint < WINPOINT) {
     if (point > 0) {
       display.innerText = 'You gain:' + point + ' point(s)'
     }
     if (point < 0) {
-      display.innerText = 'You lose:' + point * (-1) + ' point(s)'
+      display.innerText = 'You lose:' + point * -1 + ' point(s)'
     }
-    nextRound();
+    nextRound()
   } else if (playerPoint == WINPOINT) {
     display.innerText = display.innerText = 'You are the Winner!'
-  } else if(computerPoint == WINPOINT) {
+  } else if (computerPoint == WINPOINT) {
     display.innerText = display.innerText = 'Sorry, try again'
   }
-  displayPlayerPoint.innerText = 'Player points: ' + playerPoint;
-  displayComPoint.innerText = 'Computer points: ' + computerPoint;
+  displayPlayerPoint.innerText = 'Player points: ' + playerPoint
+  displayComPoint.innerText = 'Computer points: ' + computerPoint
 }
-
 
 //reset()
 // COMPUTER = classlist back-red;
@@ -183,31 +181,33 @@ function displayMessage(point) {
 
 //after click bet
 function bet() {
-    findPlayerChoice();
+  findPlayerChoice()
   if (playerCard.classList.contains('back-blue') || playerChoice == null) {
     return
   } else {
-    createCard(COMPUTER);
-    compareCard();
+    createCard(COMPUTER)
+    compareCard()
+    betButton.setAttribute("disabled", true);
   }
 }
 
 //reset()
-function reset (){
+function reset() {
   //      COMPUTER = classlist back-red;
-  computerCard.removeAttribute('class');
-  computerCard.setAttribute('class', 'card xlarge back-red');
+  computerCard.removeAttribute('class')
+  computerCard.setAttribute('class', 'card xlarge back-red')
 
   //      PLAYER = classlist back-blue;
-  playerCard.removeAttribute('class');
-  playerCard.setAttribute('class','card xlarge back-blue');
+  playerCard.removeAttribute('class')
+  playerCard.setAttribute('class', 'card xlarge back-blue')
   //      id display = "Choose your bet and click on your bet"
   display.innerText = 'Check your card first and then choose bet'
-//clear radio choice
-  document.querySelector('input[name="opt"]:checked').checked = false;
+  //clear radio choice
+  document.querySelectorAll("input[name='opt']").forEach(input => {input.checked=false})
   //      computer point = 5;
-  displayComPoint.innerText = 'Computer points: ' + INITIALPOINT;
+  displayComPoint.innerText = 'Computer points: ' + INITIALPOINT
   //      player point = 5;
-  displayPlayerPoint.innerText = 'Player points: ' + INITIALPOINT;
-}
+  displayPlayerPoint.innerText = 'Player points: ' + INITIALPOINT
 
+  betButton.removeAttribute("disabled");
+}
